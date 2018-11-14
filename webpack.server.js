@@ -2,7 +2,6 @@ const path = require('path')
 const webpackNodeExternals = require('webpack-node-externals')
 
 module.exports = {
-  mode: 'development',
   target: 'node',
   entry: './server/index.js',
   output: {
@@ -19,11 +18,11 @@ module.exports = {
           presets: [
             'react',
             'stage-0',
-            ['env', { targets: { browsers: ['last 2 versions']}}]
-          ]
-        }
+            ['env', { targets: { browsers: ['last 2 versions']}}],
+          ],
+        },
       },
-    ]
+    ],
   },
-  externals: [webpackNodeExternals],
+  externals: [webpackNodeExternals()],
 }
