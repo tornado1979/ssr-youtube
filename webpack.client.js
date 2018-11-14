@@ -1,6 +1,7 @@
 const path = require('path')
 const autoprefixer = require('autoprefixer')
 const eslintFormatter = require('react-dev-utils/eslintFormatter')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: './client/index.js',
@@ -32,7 +33,15 @@ module.exports = {
           presets: [
             'react',
             'stage-0',
-            ['env', { targets: { browsers: ['last 2 versions']}}],
+            ['env',
+              {
+                targets:
+                {
+                  browsers:
+                   ['last 2 versions'],
+                },
+              },
+            ],
           ],
         },
       },
@@ -79,4 +88,9 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'template.html',
+    }),
+  ],
 }
