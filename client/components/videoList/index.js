@@ -3,7 +3,7 @@ import propTypes from 'prop-types'
 import { VideoItem } from '../videoItem'
 
 export const VideoList = ({ videos, onVideoSelect }) => {
-  if (!videos) {
+  if (!videos.length) {
     return <div>Loading...</div>
   }
 
@@ -18,7 +18,7 @@ export const VideoList = ({ videos, onVideoSelect }) => {
   })
 
   return (
-    <ul>
+    <ul className="videoList">
       {videoItems}
     </ul>
   )

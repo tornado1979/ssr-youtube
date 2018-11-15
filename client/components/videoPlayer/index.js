@@ -1,18 +1,8 @@
 import React from 'react'
 import propTypes from 'prop-types'
 
-export const VideoPlayer = ({
-  video = {
-    id: {
-      videoId: 'S2H5ZL20j44',
-    },
-    snippet: {
-      description: 'Summer Music Mix 2018 - Camila Cabello, Ed Sheeran, Justin Bieber, Coldplay - Chill Out',
-      title: 'Summer 2018',
-    },
-  },
-}) => {
-  if (!video) {
+export const VideoPlayer = ({ video }) => {
+  if (!Object.keys(video).length) {
     return <div>Loading...</div>
   }
 

@@ -6,32 +6,15 @@ export class SearchBar extends React.Component {
     super(props)
     this.state = { query: '' }
     this.onInputChange = this.onInputChange.bind(this)
-    this.onFormSubmit = this.onFormSubmit.bind(this)
-    this.keyPress = this.keyPress.bind(this)
   }
 
   onInputChange(event) {
     this.setState({ query: event.target.value })
-  }
-
-  onFormSubmit(event) {
-    event.preventDefault()
-
     const {
-      onFormSubmit,
+      onChange,
     } = this.props
 
-    const {
-      query,
-    } = this.state
-
-    onFormSubmit(query)
-  }
-
-  keyPress(event) {
-    if (event.keyCode === 13) {
-      this.onFormSubmit(event)
-    }
+    onChange(event.target.value)
   }
 
   render() {
@@ -40,13 +23,12 @@ export class SearchBar extends React.Component {
     } = this.state
     return (
       <div className="search-bar segment">
-        <form className="form" onSubmit={this.onFormSubmit}>
+        <form className="form">
           <div className="field">
             <input
               id="searchInput"
               name="searchInput"
               onChange={this.onInputChange}
-              onKeyDown={this.keyPress}
               placeholder="Search.."
               type="text"
               value={query}
@@ -59,5 +41,5 @@ export class SearchBar extends React.Component {
 }
 
 SearchBar.propTypes = {
-  onFormSubmit: propTypes.func.isRequired,
+  onChange: propTypes.func.isRequired,
 }
